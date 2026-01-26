@@ -17,6 +17,8 @@ public class CreateAccountTests extends TestBase {
         //  сравнение паролей??
         // 7 click on the 'Register' button
 
+        //int i=(int)((System.currentTimeMillis()/1000)%3600);
+
         // Заполнение поля из 3х шагов 1.click (focus); 2.clear; 3.отправка значение (send)
 
         //1
@@ -27,6 +29,7 @@ public class CreateAccountTests extends TestBase {
         type(By.name("LastName"), "Testova");
         //4
         type(By.name("Email"), "dariiatest1@gmail.com");
+       // type(By.name("Email"), newEmail()); // newEmail- метод в Testbase, который создает каждый раз новый email для регистрации
         //5
         type(By.name("Password"), "Test123$");
         //6

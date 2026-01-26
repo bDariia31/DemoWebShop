@@ -34,7 +34,7 @@ public class TestBase // родительский класс
         return driver.findElements(locator).size()>0;
     }
 
-    @AfterMethod(enabled = true)
+    @AfterMethod
     public void tearDown()
     {
         if(driver!=null)
@@ -51,5 +51,13 @@ public class TestBase // родительский класс
 
     public void click(By locator) {
         driver.findElement(locator).click();
+    }
+
+
+    public String newEmail()
+    {
+        int i=(int)((System.currentTimeMillis()/1000)%3600);
+        String email="karl"+i+"@gmail.com";
+        return email;
     }
 }
