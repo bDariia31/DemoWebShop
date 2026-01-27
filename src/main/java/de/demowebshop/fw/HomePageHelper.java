@@ -1,0 +1,20 @@
+package de.demowebshop.fw;
+
+import de.demowebshop.core.BaseHelper;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class HomePageHelper extends BaseHelper
+{
+    protected WebDriver driver;
+
+    public HomePageHelper(WebDriver driver) {
+        super(driver);
+
+    }
+
+    public boolean isHomePageWelcomePresent()
+    {
+        return isElementPresent(By.xpath("//div[@class='topic-html-content-title']/h2"));
+    }
+}

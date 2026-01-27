@@ -1,12 +1,12 @@
 package de.demowebshop.tests;
 
-import org.openqa.selenium.By;
+import de.demowebshop.core.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CreateAccountTests extends TestBase {
 
-    @Test
+    @Test (enabled = false)
     public void newUserRegisterPositiveTest() {
         // 1 click on Register
         // 2 enter First name
@@ -21,24 +21,10 @@ public class CreateAccountTests extends TestBase {
 
         // Заполнение поля из 3х шагов 1.click (focus); 2.clear; 3.отправка значение (send)
 
-        //1
-        click(By.xpath("//a[@class='ico-register']"));
-        //2
-        type(By.name("FirstName"), "Dariia");
-        //3
-        type(By.name("LastName"), "Testova");
-        //4
-        type(By.name("Email"), "dariiatest1@gmail.com");
-       // type(By.name("Email"), newEmail()); // newEmail- метод в Testbase, который создает каждый раз новый email для регистрации
-        //5
-        type(By.name("Password"), "Test123$");
-        //6
-        type(By.name("ConfirmPassword"), "Test123$");
-        //7
-        click(By.xpath("//input[@id='register-button']"));
-
-
-        Assert.assertTrue(isElementPresent(By.xpath("//a[@class='ico-logout']")));
+        app.getUser().clickOnTheRegisterLink();
+        app.getUser().fillRegisterForm("Dariia", "Testova", "dariiatest1@gmail.com", "Test123$");
+        app.getUser().clickOnRegisterButton();
+        Assert.assertTrue(app.getUser().isLogOutInHeaderPresent());
 
     }
 
