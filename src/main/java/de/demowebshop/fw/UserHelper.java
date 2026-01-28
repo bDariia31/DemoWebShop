@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public class UserHelper extends BaseHelper
 {
-  protected WebDriver driver;
+    protected WebDriver driver;
 
     public UserHelper(WebDriver driver) {
         super(driver);
@@ -61,5 +61,24 @@ public class UserHelper extends BaseHelper
     public boolean isLogOutButtonPresent()
     {
         return isElementPresent(By.xpath("//*[@class='ico-logout']"));
+    }
+
+    //---
+
+    public boolean isLoginLinkPresent()
+    {
+        return isElementPresent(By.cssSelector("[href='/login']"));
+    }
+
+
+    public void isClickOnLoginButton()
+    {
+        click(By.cssSelector(".login-button"));
+    }
+
+
+    public void isClickOnLogOutButton()
+    {
+        click(By.xpath("//a[@class='ico-logout']"));
     }
 }

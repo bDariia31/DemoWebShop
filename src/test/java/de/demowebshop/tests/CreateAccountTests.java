@@ -2,9 +2,20 @@ package de.demowebshop.tests;
 
 import de.demowebshop.core.TestBase;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class CreateAccountTests extends TestBase {
+
+
+    @BeforeMethod
+    public void ensurePrecondition()
+    {
+        if (!app.getUser().isLoginLinkPresent())
+        {
+            app.getUser().isClickOnLoginButton();
+        }
+    }
 
     @Test (enabled = false)
     public void newUserRegisterPositiveTest() {

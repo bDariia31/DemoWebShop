@@ -3,10 +3,26 @@ package de.demowebshop.tests;
 import de.demowebshop.core.TestBase;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class LoginTests extends TestBase
 {
+    @BeforeMethod
+    public void ensurePrecondition()
+    {
+
+        if (!app.getUser().isLoginLinkPresent())
+        {
+            app.getUser().isClickOnLogOutButton();
+        }
+
+//        if (!app.getUser().isLoginLinkPresent())
+//        {
+//            app.getUser().isClickOnLoginButton();
+//        }
+    }
+
      @Test
     public void LoginPositiveTest()
      {

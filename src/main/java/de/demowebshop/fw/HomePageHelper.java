@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 
 public class HomePageHelper extends BaseHelper
 {
-    protected WebDriver driver;
 
     public HomePageHelper(WebDriver driver) {
         super(driver);

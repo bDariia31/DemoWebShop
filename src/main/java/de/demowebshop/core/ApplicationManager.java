@@ -6,19 +6,42 @@ import de.demowebshop.fw.UserHelper;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 import java.time.Duration;
 
 public class ApplicationManager {
-    protected WebDriver driver;
 
-UserHelper user;
-ItemHelper item;
-HomePageHelper homePage;
+
+    private final String browser;
+
+    WebDriver driver;
+
+     UserHelper user;
+     ItemHelper item;
+     HomePageHelper homePage;
+
+    public ApplicationManager(String browser)
+    {
+        this.browser=browser;
+    }
+
 
     public void init() {
-        WebDriverManager.chromedriver().setup();
-        driver=new ChromeDriver();
+
+        if(browser.equalsIgnoreCase("chrome"))
+        {
+           WebDriverManager.chromedriver().setup();
+           driver=new ChromeDriver();
+        } else if (browser.equalsIgnoreCase("safari"))
+        {
+            WebDriverManager.safaridriver().setup();
+            driver=new SafariDriver();
+        }
+
+//        WebDriverManager.chromedriver().setup();
+//        driver=new ChromeDriver();
+
         driver.get("https://demowebshop.tricentis.com/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
