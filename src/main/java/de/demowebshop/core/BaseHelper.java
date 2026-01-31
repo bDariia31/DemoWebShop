@@ -1,7 +1,14 @@
 package de.demowebshop.core;
-
+import com.google.common.io.Files;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+
+import java.io.File;
+import java.io.IOError;
+import java.io.IOException;
 
 public class BaseHelper
 {
@@ -27,4 +34,19 @@ public class BaseHelper
     public void click(By locator) {
         driver.findElement(locator).click();
     }
+
+   public String takeScreenshot()
+   {
+       File tmp = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE); // временный файл
+       File screen = new File("screenshots/screen-" + System.currentTimeMillis() + ".png"); // постоянный файл
+       try {
+           Files.copy(tmp,screen);
+       } catch (IOException e) {
+           throw new RuntimeException(e);
+       }
+
+       return screen.getAbsolutePath();// возвращает путь до файла
+   }
+
+
 }

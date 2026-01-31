@@ -13,6 +13,7 @@ dependencies {
     implementation("org.seleniumhq.selenium:selenium-java:4.40.0")
     implementation("org.testng:testng:7.11.0")
     implementation("io.github.bonigarcia:webdrivermanager:6.3.3")
+    implementation("ch.qos.logback:logback-classic:1.5.26")
 }
 
 test {
@@ -37,3 +38,8 @@ def registerTask(String taskName, String suitePath) {
 
 registerTask('quick','src/test/resources/quick.xml')
 registerTask('regr','src/test/resources/regression.xml')
+
+
+// для терминала , что бы запустились тесты
+// gradle -Pbrowser=safari clean quick
+// gradle -Pbrowser=safari clean regr

@@ -1,6 +1,7 @@
 package de.demowebshop.tests;
 
 import de.demowebshop.core.TestBase;
+import de.demowebshop.data.UserData;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -24,7 +25,7 @@ public class ItemTests extends TestBase
 //        }
 
         app.getUser().clickOnLoginLink();
-        app.getUser().fillLoginForm("dariiatest1@gmail.com", "Test123$");
+        app.getUser().fillLoginForm(UserData.EMAIL, UserData.PASSWORD);
         app.getUser().clickOnLoginButton();
 
     }

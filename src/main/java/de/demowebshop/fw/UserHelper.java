@@ -81,4 +81,6 @@ public class UserHelper extends BaseHelper
     {
         click(By.xpath("//a[@class='ico-logout']"));
     }
+
+
 }
